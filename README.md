@@ -114,5 +114,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ---
 
 <p align="center">
-  Made with ❤️ by the <a href="https://github.com/senpaisaul">SenpaiSaul</a> Team
+  Made with ❤️ by the <a href="https://github.com/senpaisaul">SenpaiSaul</a> 
 </p>
