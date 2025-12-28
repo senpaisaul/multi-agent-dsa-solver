@@ -1,58 +1,118 @@
-# Multi-Agent DSA Solver
+# 🧠 Multi-Agent DSA Solver
 
-This project implements a multi-agent system designed to solve Data Structures and Algorithms (DSA) and Competitive Programming problems autonomously. It utilizes a team of specialized AI agents to decompose, plan, design, implement, and review solutions.
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python)
+![OpenAI](https://img.shields.io/badge/AI-OpenAI%20GPT-green?style=for-the-badge&logo=openai)
+![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)
 
-## Project Structure
+> **An autonomous coding assistant that solves Competitive Programming problems using a team of specialized AI agents.**
 
-- **`orchestrator.py`**: The main entry point of the application. It orchestrates the entire workflow, managing the interaction between different agents and phases (Decomposition, Planning, Design, Development, Review).
-- **`agents.py`**: Defines the `Agent` base class and specific agent roles:
-  - `Decomposer`: Breaks down the problem into mathematical and algorithmic sub-tasks.
-  - `Manager`: Plans the development process and coordinates experts.
-  - `AlgorithmExpert`: Designs the optimal algorithm.
-  - `IOExpert`: Handles efficient Input/Output strategies.
-  - `Developer`: Implements the solution in Python.
-  - `Reviewer`: specifices quality assurance and correctness checks.
-- **`utils.py`**: Contains utility functions for file operations and interactions with the OpenAI API.
+---
 
-## Setup
+## 🏗️ System Architecture
 
-1.  **Clone the repository**:
-    ```bash
-    git clone <repository_url>
-    cd <repository_directory>
-    ```
+This project uses a **multi-agent orchestration** pattern where different AI "personas" collaborate to solve complex algorithmic problems.
 
-2.  **Install dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
+```mermaid
+graph TD
+    User([👤 User]) -->|Input PROBLEM.txt| Orch{🎼 Orchestrator}
+    
+    subgraph "Phase 1: Analysis"
+        Orch -->|Raw Text| Decomposer[🧩 Decomposer]
+        Decomposer -->|Math & Logic| Manager[👔 Manager]
+    end
+    
+    subgraph "Phase 2: Strategy"
+        Manager -->|Plan| Algo[📐 Algo Expert]
+        Manager -->|Plan| IO[⚡ IO Expert]
+    end
+    
+    subgraph "Phase 3: Execution"
+        Algo -->|Design| Dev[💻 Developer]
+        IO -->|Strategy| Dev
+        Dev -->|Draft Code| Reviewer[🔍 Reviewer]
+    end
+    
+    subgraph "Phase 4: Optimization"
+        Reviewer -->|Feedback| Dev
+        Reviewer -->|Approved| Final([✅ Solution.py])
+    end
 
-3.  **Environment Configuration**:
-    - Create a `.env` file in the root directory.
-    - Add your OpenAI API key:
-      ```
-      OPENAI_API_KEY=your_api_key_here
-      ```
-      *(Note: The `utils.py` handles loading this file)*
+    style Orch fill:#f9f,stroke:#333,stroke-width:2px
+    style Decomposer fill:#bbf,stroke:#333,stroke-width:2px
+    style Manager fill:#bfb,stroke:#333,stroke-width:2px
+    style Dev fill:#fbf,stroke:#333,stroke-width:2px
+    style Reviewer fill:#fbb,stroke:#333,stroke-width:2px
+```
 
-## Usage
+## 🚀 Key Features
 
-1.  Place your problem statement in a file named `PROBLEM.txt`.
-2.  Run the orchestrator:
+| Agent | Role & Responsibility |
+|-------|-----------------------|
+| **🧩 Decomposer** | Breaks down high-level problems into core mathematical properties and sub-tasks. |
+| **👔 Manager** | Coordinates the workflow, ensuring the strategy aligns with O(N) constraints. |
+| **📐 Algo Expert** | Specializes in Identifying reductions (Graphs, DP, Combinatorics) and optimal logic. |
+| **⚡ IO Expert** | Designs fast I/O optimizations (System.in, FastIO) crucial for large inputs (N=10⁶). |
+| **💻 Developer** | Synthesizes mathematics and designs into executable Python code. |
+| **🔍 Reviewer** | Acts as the Quality Assurance lead, checking for edge cases and complexity violations. |
+
+## 📂 Project Structure
+
+```text
+├── 📄 orchestrator.py    # Main entry point; manages the agent lifecycle
+├── 📄 agents.py          # Definitions of all Agent classes (Decomposer, etc.)
+├── 📄 utils.py           # Helper functions (File I/O, OpenAI API calls)
+├── 📄 solution.py        # The generated output code (Auto-created)
+├── 📄 requirements.txt   # Project dependencies
+├── 📄 .env               # API Keys configuration
+└── 📁 data
+    ├── 📄 PROBLEM.txt    # Paste your problem statement here
+    └── 📄 input.txt      # Optional test case inputs
+```
+
+## 🛠️ Getting Started
+
+### 1. Prerequisites
+- Python 3.8 or higher
+- An OpenAI API Key
+
+### 2. Installation
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/senpaisaul/multi-agent-dsa-solver.git
+cd multi-agent-dsa-solver
+pip install -r requirements.txt
+```
+
+### 3. Configuration
+Create a `.env` file in the root directory:
+
+```ini
+OPENAI_API_KEY=sk-your-api-key-here
+```
+
+## ⚡ Usage Workflow
+
+1.  **Paste your problem** into `PROBLEM.txt`.
+2.  **Run the Orchestrator**:
     ```bash
     python orchestrator.py
     ```
-3.  The system will:
-    - Read the problem from `PROBLEM.txt`.
-    - Go through decomposition, planning, and design phases.
-    - Generate a solution in `solution.py`.
-    - Review and refine the solution if necessary.
+3.  **Watch the Magic**: The agents will print their thought process to the console as they collaborate.
+4.  **Get the Solution**: The final executable code will be saved to `solution.py`.
 
-## Inputs and Outputs
+## 🤝 Contributing
 
-- **Input**: `PROBLEM.txt` (The problem statement).
-- **Output**: `solution.py` (The generated Python solution code).
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
+1. Fork the project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-[MIT License](LICENSE)
+---
+
+<p align="center">
+  Made with ❤️ by the <a href="https://github.com/senpaisaul">SenpaiSaul</a> Team
+</p>
